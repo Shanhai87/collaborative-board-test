@@ -6,6 +6,9 @@
         "use": "@vercel/node"
       }
     ],
+    "env": {
+      "DATABASE_URL": "postgresql://neondb_owner:npg_oByvTp8MRfJ1@ep-shiny-heart-a2eioe49-pooler.eu-central-1.aws.neon.tech/neondb?sslmode=require"
+    },
     "routes": [
       {
         "src": "/(.*)",
