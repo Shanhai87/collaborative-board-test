@@ -1,9 +1,12 @@
+import cors from "cors";
+
 const express = require('express');
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 const app = express();
 
 app.use(express.json());
+app.use(cors({ origin: "https://shanhai87.github.io" }));
 
 // Пример маршрута для получения всех пользователей
 app.get('/users', async (req, res) => {
