@@ -1,0 +1,9 @@
+# Node.js dependencies
+node_modules/
+
+# Prisma generated files
+/prisma/client/
+
+# dotenv environment variable file
+.env
+.gitignore
