@@ -24,7 +24,7 @@ Thumbs.db  # Для Windows
 .env.*.local
 
 # Prisma migration files (если не нужно отслеживать миграции)
-# prisma/migrations/
+prisma/migrations/
 
 # Coverage directory for test reports
 coverage/
