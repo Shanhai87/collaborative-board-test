@@ -1,20 +1,25 @@
 import nodemailer from 'nodemailer';
 
-export const sendConfirmationEmail = async (email, token) => {
-  const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS,
-    },
-  });
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.GMAIL_APP,
+    pass: process.env.GMAIL_APP_PASSWORD,  // Используй App Password
+  },
+});
 
+export const sendConfirmationEmail = async (email, token) => {
   const mailOptions = {
-    from: process.env.EMAIL_USER,
+    from: process.env.GMAIL_APP,
     to: email,
-    subject: 'Подтверждение email',
-    html: `<h1>Подтвердите свой email</h1><p>Для подтверждения перейдите по <a href="http://localhost:3000/confirm/${token}">ссылке</a></p>`,
+    subject: 'Подтверждение регистрации',
+    html: `<p>Пожалуйста, подтвердите свою регистрацию, перейдя по следующей ссылке: <a href="https://collaborative-board-test.vercel.app/confirm?token=${token}">Подтвердить</a></p>`,
   };
 
-  await transporter.sendMail(mailOptions);
+  try {
+    const info = await transporter.sendMail(mailOptions);
+    console.log('Письмо отправлено:', info);
+  } catch (error) {
+    console.error('Ошибка при отправке письма:', error);
+  }
 };
