@@ -13,7 +13,8 @@ export const sendConfirmationEmail = async (email, token) => {
     from: process.env.GMAIL_APP,
     to: email,
     subject: 'Подтверждение регистрации',
-    html: `<p>Пожалуйста, подтвердите свою регистрацию, перейдя по следующей ссылке: <a href="https://collaborative-board-test.vercel.app/confirm?token=${token}">Подтвердить</a></p>`,
+    html: `<p>Пожалуйста, подтвердите свою регистрацию, перейдя по следующей ссылке: <a href="https://collaborative-board-test.vercel.app/api/confirm?token=${token}">Подтвердить</a></p>`,
+    // html: `<p>Пожалуйста, подтвердите свою регистрацию, перейдя по следующей ссылке: <a href="http://localhost:3000/api/confirm?token=${token}">Подтвердить</a></p>`,
   };
 
   try {

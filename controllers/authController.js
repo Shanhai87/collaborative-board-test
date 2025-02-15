@@ -40,7 +40,8 @@ export const registerUser = async (req, res) => {
 };
 
 export const confirmEmail = async (req, res) => {
-  const { token } = req.params;
+  const { token } = req.query;
+
   try {
     // Расшифровываем токен
     const decoded = jwt.decode(token, JWT_SECRET);

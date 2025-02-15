@@ -304,7 +304,7 @@ dotenv.config();
 
 const app = express();
 app.use(express.json());
-app.use(cors({ origin: 'https://shanhai87.github.io/board' }));
+// app.use(cors({ origin: 'https://shanhai87.github.io/board' }));
 
 app.use('/api', authRoutes);
 
