@@ -9,10 +9,13 @@ const app = express();
 app.use(express.json());
 // Настроим CORS
 app.use(cors({
-  origin: 'https://shanhai87.github.io/board', // Разрешаем доступ только с этого домена
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
+  origin: '*', // Разрешить все домены (не рекомендуется для продакшн)
 }));
+// app.use(cors({
+//   origin: 'https://shanhai87.github.io/board', // Разрешаем доступ только с этого домена
+//   methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//   allowedHeaders: ['Content-Type', 'Authorization'],
+// }));
 
 app.use('/api', authRoutes);
 
