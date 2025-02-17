@@ -79,9 +79,17 @@ export const loginUser = async (req, res) => {
       return res.status(400).json({ error: 'Почта не подтверждена' });
     }
 
+    // Генерация токена
     const token = jwt.encode({ id: user.id }, JWT_SECRET);
 
-    res.json({ token, user: { id: user.id, name: user.name, email: user.email } });
+    // Устанавливаем токен в куки с флагом HttpOnly
+    res.cookie('auth_token', token, {
+      httpOnly: true, // Это предотвратит доступ к токену через JS
+      secure: process.env.NODE_ENV === 'production', // Передавать только через HTTPS
+      maxAge: 3600 * 1000, // 1 час
+    });
+
+    res.json({ message: 'Успешный вход' });
   } catch (error) {
     res.status(500).json({ error: 'Ошибка при входе' });
   }
