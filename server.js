@@ -7,7 +7,12 @@ dotenv.config();
 
 const app = express();
 app.use(express.json());
-// app.use(cors({ origin: 'https://shanhai87.github.io/board' }));
+// Настроим CORS
+app.use(cors({
+  origin: 'https://shanhai87.github.io/board', // Разрешаем доступ только с этого домена
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+}));
 
 app.use('/api', authRoutes);
 
