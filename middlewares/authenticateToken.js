@@ -3,10 +3,10 @@ import jwt from 'jwt-simple';
 const JWT_SECRET = process.env.JWT_SECRET || 'your_secret_key';
 
 const authenticateToken = (req, res, next) => {
-  const token = req.cookies.auth_token;
+  const token = req.cookies.auth_token; // Извлекаем токен из cookies
 
   if (!token) {
-    return res.status(401).json({ error: 'Токен не предоставлен' });
+    return res.status(401).json({ error: 'Не авторизован' });
   }
 
   try {
